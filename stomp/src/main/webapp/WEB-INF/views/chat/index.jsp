@@ -25,7 +25,7 @@ $(document).on("click", ".conn-btn", function(){
 	
 	stompClient.connect({}, function(frame) {
 		console.log('Connected:' + frame);
-		stompClient.subscribe('/topic/a', function(response){
+		stompClient.subscribe('/topic/b', function(response){
 			console.log(response);
 			console.log(JSON.parse(response.body));
 		});

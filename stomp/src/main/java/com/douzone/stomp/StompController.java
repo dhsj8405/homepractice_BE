@@ -19,7 +19,7 @@ public class StompController {
 		
 		String msg[] = a.split(":");
 		HashMap<String,Object> map = new HashMap<>();
-		map.put("메시지", msg[1]);
+		map.put("메시지", msg[1]);   
 		simpMessagingTemplate.convertAndSend("/topic/a",map);
 	}
 	
