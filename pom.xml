@@ -13,6 +13,7 @@
   <modules>
   	<module>tomcatmanagerdeploy</module>
   	<module>stomp</module>
+  	<module>cors</module>
   </modules>
 
   
