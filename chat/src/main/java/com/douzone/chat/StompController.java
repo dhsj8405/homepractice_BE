@@ -31,9 +31,10 @@ public class StompController {
 	 @MessageMapping( "/chat/message")
 	    public void message(ChatMessageDto message){
 
-			System.out.println(message);
+			System.out.println(message.getMsg());
 	    	
-			simpMessagingTemplate.convertAndSend("/topic/chat/room/a" + message.getChatRoomNo(), message);
+			//이걸로 <<<MESSAGE명령어 적힌 프레임 확인할수있음
+			simpMessagingTemplate.convertAndSend("/topic/chat/room/a" , message);
 	    }
 	
 }
