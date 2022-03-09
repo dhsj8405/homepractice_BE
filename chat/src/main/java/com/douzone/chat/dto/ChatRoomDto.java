@@ -1,35 +1,22 @@
 package com.douzone.chat.dto;
 
 public class ChatRoomDto {
-	private int roomId;
-	private String roomName;
-	private int userNo;
-	private String inputMessage;	// 채팅 방 생성 후 전송할 메시지
-	public int getRoomId() {
-		return roomId;
+	private Long no;
+	private String name;
+//	private int userNo;
+//	private String inputMessage;	// 채팅 방 생성 후 전송할 메시지
+	public Long getNo() {
+		return no;
 	}
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+	public void setNo(Long no) {
+		this.no = no;
 	}
-	public String getRoomName() {
-		return roomName;
+	public String getName() {
+		return name;
 	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-	public String getInputMessage() {
-		return inputMessage;
-	}
-	public void setInputMessage(String inputMessage) {
-		this.inputMessage = inputMessage;
-	}
-
-	
+		
 
 }

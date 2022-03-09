@@ -18,20 +18,20 @@ public class StompController {
 
 	@MessageMapping("/chat/enter")
 	public void enter(ChatRoomDto roomInfo) {
-		System.out.println("zzzz");
-		System.out.println(roomInfo.getRoomId());
-		System.out.println(roomInfo.getRoomName());
-		System.out.println(roomInfo.getUserNo());
-		System.out.println(roomInfo.getInputMessage());
-		roomInfo.setInputMessage(roomInfo.getUserNo() +"님이 채팅방에 참여하였습니다.");
-		
+//		System.out.println("zzzz");
+//		System.out.println(roomInfo.getRoomId());
+//		System.out.println(roomInfo.getRoomName());
+//		System.out.println(roomInfo.getUserNo());
+//		System.out.println(roomInfo.getInputMessage());
+//		roomInfo.setInputMessage(roomInfo.getUserNo() +"님이 채팅방에 참여하였습니다.");
+//		
 		simpMessagingTemplate.convertAndSend("/topic/chat/room/a",roomInfo);
 	}
 	
 	 @MessageMapping( "/chat/message")
 	    public void message(ChatMessageDto message){
 
-			System.out.println(message.getMsg());
+//			System.out.println(message.getMsg());
 	    	
 			//이걸로 <<<MESSAGE명령어 적힌 프레임 확인할수있음
 			simpMessagingTemplate.convertAndSend("/topic/chat/room/a" , message);

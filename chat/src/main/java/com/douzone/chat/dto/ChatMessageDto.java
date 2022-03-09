@@ -1,27 +1,43 @@
 package com.douzone.chat.dto;
 
 public class ChatMessageDto {
-	private int chatRoomNo;
-    private String msg;
-    private String send_user_no;
+	private Long no;
+    private String message;
+    private int chatRoomNo;
+    private String sendUserNo;
+    private String regDate;
+	
+	public Long getNo() {
+		return no;
+	}
+	public void setNo(Long no) {
+		this.no = no;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public int getChatRoomNo() {
 		return chatRoomNo;
 	}
 	public void setChatRoomNo(int chatRoomNo) {
 		this.chatRoomNo = chatRoomNo;
 	}
-	public String getMsg() {
-		return msg;
+	public String getSendUserNo() {
+		return sendUserNo;
 	}
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setSendUserNo(String sendUserNo) {
+		this.sendUserNo = sendUserNo;
 	}
-	public String getSend_user_no() {
-		return send_user_no;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setSend_user_no(String send_user_no) {
-		this.send_user_no = send_user_no;
-	} 
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
     
     
 }

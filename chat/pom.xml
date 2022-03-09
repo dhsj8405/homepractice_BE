@@ -45,7 +45,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-	
+		
+		<!-- MyBatis Starter-->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		
+		<!-- MariaDB JDBC Driver -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+		</dependency>
+	<!-- Common DBCP -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+			<!-- Common IO -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
 		<!-- tomcat jasper -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
