@@ -13,6 +13,18 @@
 				]]>
 		</selectKey>
 	</insert>
-</mapper>
 	
+	<insert id="createChatInfo" parameterType="map">
+		<![CDATA[
+			insert into join_chat_room values (null, #{userNo}, #{chatRoomNo})
+		]]>
+	</insert>
+	<select id="findAllMessage" resultType="ChatMessageDto">
+		<![CDATA[
+			select no,message,chat_room_no,send_user_no,reg_date 
+		      from chat_message
+		     where chat_room_no= 1
+		]]>
+	</select>
+</mapper>
 

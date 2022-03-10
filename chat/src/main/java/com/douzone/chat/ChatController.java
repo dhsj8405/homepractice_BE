@@ -1,5 +1,6 @@
 package com.douzone.chat;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.douzone.chat.dto.ChatMessageDto;
 import com.douzone.chat.service.ChatService;
 import com.douzone.chat.service.UserService;
 import com.douzone.chat.vo.UserVo;
@@ -32,15 +34,29 @@ public class ChatController {
     }
     
     @PostMapping("/chat/invite")
-    public void inviteChat(@RequestBody List<UserVo> list){
+    public Long inviteChat(@RequestBody List<UserVo> list){
     	
-    	System.out.println(list);
-    	for(UserVo userVo : list){
-    		System.out.println(userVo.getId());
-    	}
+//    	System.out.println(list);
+//    	for(UserVo userVo : list){
+//    		System.out.println(userVo.getId());
+//    	}
     	
-    	chatService.addChatRoom(list);
+    	Long chatRoomNo = chatService.addChatRoom(list);
     	
+    	//초대하면서 바로 채팅방 켜줘야하기때문에 생성된 채팅방 번호 리턴해줌
+    	return chatRoomNo;
     }
+    
+    @GetMapping("/chat/msgList")
+  public Map<String, Object> getMessageList(){
+  	System.out.println("z");
+  	// 가라로 채팅룸번호 1번넣을것임
+  	List<ChatMessageDto> list = chatService.getMessageList(1);
+	Map<String, Object> map = new HashMap<>();
+	map.put("list", list);
+
+  	return map;
+  }
+  
     
 }

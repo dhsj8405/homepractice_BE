@@ -15,6 +15,7 @@ public class FilterConfig {
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter());
 		bean.addUrlPatterns("/main/*");
 		bean.addUrlPatterns("/chat/*");
+		bean.addUrlPatterns("/user/*");
 		
 //		bean.addUrlPatterns("/chat/*");
 		bean.setOrder(0); // 낮은 번호부터 실행됨.
