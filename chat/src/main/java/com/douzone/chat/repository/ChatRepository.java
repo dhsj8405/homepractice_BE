@@ -34,5 +34,10 @@ public class ChatRepository {
 		return sqlSession.selectList("chat.findAllMessage");
 		
 	}
+
+	public void insertMessage(ChatMessageDto message) {
+		sqlSession.insert("chat.insertMessage",message);
+
+	}
 	
 }

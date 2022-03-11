@@ -26,5 +26,13 @@
 		     where chat_room_no= 1
 		]]>
 	</select>
+	
+	<insert id="insertMessage" parameterType="ChatMessageDto">
+		<![CDATA[
+			insert into chat_message values (null, #{message}, #{chatRoomNo}, #{sendUserNo}, now())
+		]]>
+	</insert>
+	
+	
 </mapper>
 

@@ -9,10 +9,15 @@ import org.springframework.stereotype.Controller;
 
 import com.douzone.chat.dto.ChatMessageDto;
 import com.douzone.chat.dto.ChatRoomDto;
+import com.douzone.chat.service.ChatService;
 
 @Controller
 public class StompController {
 
+	@Autowired
+	private ChatService chatService;
+	
+	
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
 
@@ -34,7 +39,10 @@ public class StompController {
 	    public void message(ChatMessageDto message){
 
 			System.out.println(message.getMessage());
+			System.out.println(message.getSendUserNo());
 	    	
+			chatService.addMessage(message);
+			
 			//이걸로 <<<MESSAGE명령어 적힌 프레임 확인할수있음
 			simpMessagingTemplate.convertAndSend("/topic/chat/room/1" , message);
 	    }

@@ -41,5 +41,8 @@ public class ChatService {
 	public List<ChatMessageDto> getMessageList(int i) {
 		return chatRepository.findAllMessage(i); 
 	}
+	public void addMessage(ChatMessageDto message) {
+		chatRepository.insertMessage(message);
+	}
 
 }
