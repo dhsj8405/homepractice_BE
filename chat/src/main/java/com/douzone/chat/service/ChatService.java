@@ -44,5 +44,9 @@ public class ChatService {
 	public void addMessage(ChatMessageDto message) {
 		chatRepository.insertMessage(message);
 	}
+	public List<ChatRoomDto> getChatRoomList(String id) {
+		return chatRepository.findAllChatRoom(id);
+		
+	}
 
 }

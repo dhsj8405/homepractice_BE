@@ -39,5 +39,10 @@ public class ChatRepository {
 		sqlSession.insert("chat.insertMessage",message);
 
 	}
+
+	public List<ChatRoomDto> findAllChatRoom(String id) {
+		return sqlSession.selectList("chat.findAllChatRoom",id);
+
+	}
 	
 }

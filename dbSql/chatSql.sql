@@ -15,10 +15,24 @@ insert into join_chat_room values (null, 2, 1);
 insert into chat_message values( null, "우동현:gd",1,1,now());
 insert into chat_message values( null, "김민규:ㅇㅋ",1,2,now());
 
--- 채팅방별 메시지 조회 
-select no,message,chat_room_no,send_user_no,reg_date 
+-- id에 해당하는 채팅방 조회
+select cr.no, 
+	   cr.name, 
+	   jcr.user_no 
+  from chat_room cr, 
+	   join_chat_room jcr 
+ where cr.no = jcr.chat_room_no
+   and jcr.user_no = (select no from user where id = 'bbbb');
+
+-- 채팅방별 메시지 chat_roomchat_roomchat_room조회 
+select a.no,a.message,a.chat_room_no,a.send_user_no,a.reg_date 
+from
+	(select no,message,chat_room_no,send_user_no,reg_date 
     from chat_message
     where chat_room_no= 1
+    order by no desc 
+    limit 0,5) a
+    order by no asc
     ;
 
 
