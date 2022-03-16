@@ -22,17 +22,20 @@ public class StompController {
 	private SimpMessagingTemplate simpMessagingTemplate;
 
 	@MessageMapping("/chat/enter")
-	public void enter(ChatRoomDto roomInfo) {
+	public void enter(ChatMessageDto roomInfo) {
 		System.out.println("zzzz");
 //		System.out.println(roomInfo.getRoomId());
 //		System.out.println(roomInfo.getRoomName());
 //		System.out.println(roomInfo.getUserNo());
 //		System.out.println(roomInfo.getInputMessage());
-		roomInfo.setName(roomInfo.getName() +"채팅방이 생성되었습니다.");
-		
+//		roomInfo.setName(roomInfo.getName() +"채팅방이 생성되었습니다.");
+		System.out.println(roomInfo.getNo());
+		System.out.println(roomInfo.getMessage());
+		System.out.println(roomInfo.getChatRoomNo());
+		roomInfo.setMessage(roomInfo.getChatRoomNo()+"번 채팅방에 입장했습니다.");
 		//테스트용 가라번호삽입
-		roomInfo.setNo(1L);
-		simpMessagingTemplate.convertAndSend("/topic/chat/room/"+roomInfo.getNo(),roomInfo);
+//		roomInfo.setNo(1L);
+		simpMessagingTemplate.convertAndSend("/topic/chat/room/"+roomInfo.getChatRoomNo(),roomInfo);
 	}
 	
 	 @MessageMapping( "/chat/message")
@@ -44,7 +47,7 @@ public class StompController {
 			chatService.addMessage(message);
 			
 			//이걸로 <<<MESSAGE명령어 적힌 프레임 확인할수있음
-			simpMessagingTemplate.convertAndSend("/topic/chat/room/1" , message);
+			simpMessagingTemplate.convertAndSend("/topic/chat/room/"+message.getChatRoomNo(), message);
 	    }
 	
 }

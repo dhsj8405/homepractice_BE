@@ -14,7 +14,7 @@ public class SocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // handshake가 될 endpoint 지정
 		// cors 필터 태우면 에러뜸
-		registry.addEndpoint("/stomp").setAllowedOrigins("http://localhost:3000").withSockJS();
+		registry.addEndpoint("/stomp/connect").setAllowedOrigins("http://localhost:3000").withSockJS();
     }
 
     @Override
