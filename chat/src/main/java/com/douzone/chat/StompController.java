@@ -42,7 +42,7 @@ public class StompController {
 	    public void message(ChatMessageDto message){
 
 			System.out.println(message.getMessage());
-			System.out.println(message.getSendUserNo());
+			System.out.println(message.getSendUserId());
 	    	
 			chatService.addMessage(message);
 			

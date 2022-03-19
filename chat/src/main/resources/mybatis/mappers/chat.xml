@@ -24,6 +24,31 @@
 			select a.no as no,
 				   a.message as message,
 				   a.chat_room_no as chatRoomNo,
+				   a.id as sendUserId,
+				   a.name as sendUserName,
+				   a.reg_date as regDate
+				from
+					(select cm.no,
+							cm.message,
+				            cm.chat_room_no,
+				            cm.reg_date,
+				            u.id,
+				            u.name
+					   from chat_message cm, 
+						    user u
+					  where chat_room_no= 1
+				        and cm.send_user_no = u.no
+				   order by no desc 
+				    limit 0,20) a
+			order by no asc;
+		]]>
+	</select>
+	
+		<select id="findAllMessage2" resultType="ChatMessageDto">
+		<![CDATA[
+			select a.no as no,
+				   a.message as message,
+				   a.chat_room_no as chatRoomNo,
 				   a.send_user_no as sendUserNo,
 				   a.reg_date as regDate 
 				from
@@ -31,10 +56,12 @@
 				    from chat_message
 				    where chat_room_no= 1
 				    order by no desc 
-				    limit 0,5) a
+				    limit 0,20) a
 				    order by no asc
 		]]>
 	</select>
+	
+
 	
 	<select id="findAllMessage1" resultType="ChatMessageDto">
 		<![CDATA[
