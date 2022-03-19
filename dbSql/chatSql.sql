@@ -24,7 +24,7 @@ select cr.no,
  where cr.no = jcr.chat_room_no
    and jcr.user_no = (select no from user where id = 'bbbb');
 
--- 채팅방별 메시지 chat_roomchat_roomchat_room조회 
+-- 채팅방별 메시지 chat_room조회 
 select a.no,a.message,a.chat_room_no,a.send_user_no,a.reg_date 
 from
 	(select no,message,chat_room_no,send_user_no,reg_date 
@@ -35,7 +35,30 @@ from
     order by no asc
     ;
 
-
+select a.no,a.message,a.chat_room_no,a.reg_date ,a.name,a.id
+from
+	(select cm.no,
+			cm.message,
+            cm.chat_room_no,
+            u.id,
+            cm.reg_date,
+            u.name
+	   from chat_message cm, 
+		    user u
+	  where chat_room_no= 1
+        and cm.send_user_no = u.no
+        -- and DATE_FORMAT(cm.reg_date, "%Y-%m-%d") = CURDATE()
+   order by no desc 
+	  limit 0,5) a
+order by no asc;
+    
+    select cm.no,cm.message,cm.chat_room_no,cm.send_user_no,cm.reg_date,u.name
+    from chat_message cm, user u
+    where chat_room_no= 1
+      and cm.send_user_no = u.no
+    order by no desc 
+    limit 0,5;
+    
 select no,id,name,password from user;
 select no,name,id,password from user
 ;
