@@ -1,9 +1,9 @@
 # homepractice_BE
 
-- chat-practice
+- [chat-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/chat) / Front-end : [chat-practice](https://github.com/dhsj8405/homepractice_FE/tree/main/chat-practice)
 
-- cors-practice
+- [cors-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/cors) / Front-end : [cors-practice](https://github.com/dhsj8405/homepractice_FE/tree/main/cors-practice)
 
-- stomp-practice
+- [stomp-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/stomp) 
 
-- tomcatmanagerdeploy-practice
+- [tomcatmanagerdeploy-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/tomcatmanagerdeploy) 
