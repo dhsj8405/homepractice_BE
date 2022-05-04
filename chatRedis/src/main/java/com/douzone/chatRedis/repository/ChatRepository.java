@@ -31,7 +31,7 @@ public class ChatRepository {
 	}
 
 	public List<ChatMessageDto> findAllMessage(int i) {
-		return sqlSession.selectList("chat.findAllMessage");
+		return sqlSession.selectList("chat.findAllMessage", i);
 		
 	}
 

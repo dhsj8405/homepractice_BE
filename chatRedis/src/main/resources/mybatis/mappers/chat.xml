@@ -19,7 +19,7 @@
 			insert into join_chat_room values (null, #{userNo}, #{chatRoomNo})
 		]]>
 	</insert>
-	<select id="findAllMessage" resultType="ChatMessageDto">
+	<select id="findAllMessage" parameterType="integer" resultType="ChatMessageDto">
 		<![CDATA[
 			select a.no as no,
 				   a.message as message,
@@ -36,7 +36,7 @@
 				            u.name
 					   from chat_message cm, 
 						    user u
-					  where chat_room_no= 1
+					  where chat_room_no= #{no}
 				        and cm.send_user_no = u.no
 				   order by no desc 
 				    limit 0,20) a

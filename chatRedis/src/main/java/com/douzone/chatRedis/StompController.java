@@ -1,15 +1,16 @@
 package com.douzone.chatRedis;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.douzone.chatRedis.dto.ChatMessageDto;
-import com.douzone.chatRedis.dto.ChatRoomDto;
 import com.douzone.chatRedis.service.ChatService;
+import com.douzone.chatRedis.service.RedisPublisher;
+import com.douzone.chatRedis.service.RedisSubscriber;
 
 @Controller
 public class StompController {
@@ -17,6 +18,14 @@ public class StompController {
 	@Autowired
 	private ChatService chatService;
 	
+	@Autowired
+	private RedisPublisher redisPublisher;
+	
+	@Autowired
+	private RedisMessageListenerContainer redisMessageListener;
+
+	@Autowired
+	private RedisSubscriber redisSubscriber;
 	
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
@@ -36,6 +45,9 @@ public class StompController {
 		//테스트용 가라번호삽입
 //		roomInfo.setNo(1L);
 		simpMessagingTemplate.convertAndSend("/topic/chat/room/"+roomInfo.getChatRoomNo(),roomInfo);
+		
+//		ChannelTopic topic = new ChannelTopic((roomInfo.getChatRoomNo()).toString());
+//	    redisMessageListener.addMessageListener(redisSubscriber,topic);
 	}
 	
 	 @MessageMapping( "/chat/message")
@@ -46,8 +58,12 @@ public class StompController {
 	    	
 			chatService.addMessage(message);
 			
-			//이걸로 <<<MESSAGE명령어 적힌 프레임 확인할수있음
+			//레디스 x 기본 메시지 템플릿
 			simpMessagingTemplate.convertAndSend("/topic/chat/room/"+message.getChatRoomNo(), message);
+			
+			//레디스
+			ChannelTopic topic = new ChannelTopic(String.valueOf(message.getChatRoomNo()));
+	        redisPublisher.publish(topic,message);
 	    }
 	
 }
