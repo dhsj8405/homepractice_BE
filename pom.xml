@@ -15,6 +15,8 @@
   	<module>stomp</module>
   	<module>cors</module>
   	<module>chat</module>
+  	<module>chatRedis</module>
+  	<module>redis</module>
   </modules>
 
   

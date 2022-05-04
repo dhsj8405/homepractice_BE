@@ -5,16 +5,15 @@
     <artifactId>homepractice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>chat</artifactId>
+  <artifactId>chatRedis</artifactId>
   <packaging>war</packaging>
   
-   <!-- jre System 라이브러리 1.25인것 1.8로 바꿈 -->
+  <!-- jre System 라이브러리 1.25인것 1.8로 바꿈 -->
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	
-	<!-- 부모 스타터 대체하는것: 우리수업에서 파일정리때문에 메이븐모듈(프로젝트가) 단독으로 쓰이지 못해서 사용 --> 
+  <!-- 부모 스타터 대체하는것: 우리수업에서 파일정리때문에 메이븐모듈(프로젝트가) 단독으로 쓰이지 못해서 사용 --> 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -45,7 +44,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		
 		<!-- MyBatis Starter-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
@@ -58,7 +56,8 @@
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
-	<!-- Common DBCP -->
+		<!-- Common DBCP -->
+		<!-- 데이터베이스 커넥션풀 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -76,16 +75,19 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		<!-- 웹소켓 -->
-		
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-		
+        <!-- 레디스 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        
 	</dependencies>
-	
 	<build>
-		<finalName>chat</finalName>
+		<finalName>chatRedis</finalName>
 		<plugins>
 			<!-- 스프링 부트 메이븐 플러그인 : 최종목적 : 우버 jar를 만듦 -->
 			<plugin>
@@ -108,12 +110,11 @@
 				<version>1.1</version>
 				<configuration>
 					<url>http://192.168.219.104:8088/manager/text</url>
-					<path>/chat</path>
+					<path>/chatRedis</path>
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-  
 </project>

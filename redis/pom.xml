@@ -5,7 +5,7 @@
     <artifactId>homepractice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>chat</artifactId>
+  <artifactId>redis</artifactId>
   <packaging>war</packaging>
   
    <!-- jre System 라이브러리 1.25인것 1.8로 바꿈 -->
@@ -13,8 +13,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	
-	<!-- 부모 스타터 대체하는것: 우리수업에서 파일정리때문에 메이븐모듈(프로젝트가) 단독으로 쓰이지 못해서 사용 --> 
+  <!-- 부모 스타터 대체하는것: 우리수업에서 파일정리때문에 메이븐모듈(프로젝트가) 단독으로 쓰이지 못해서 사용 --> 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -46,46 +45,20 @@
 		</dependency>
 		
 		
-		<!-- MyBatis Starter-->
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.3.2</version>
-		</dependency>
-		
-		<!-- MariaDB JDBC Driver -->
-		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-		</dependency>
-	<!-- Common DBCP -->
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
-			<!-- Common IO -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>1.4</version>
-		</dependency>
 		<!-- tomcat jasper -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-		<!-- 웹소켓 -->
 		
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
-		
+		<!-- 레디스 -->
+		<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 	</dependencies>
-	
 	<build>
-		<finalName>chat</finalName>
+		<finalName>redis</finalName>
 		<plugins>
 			<!-- 스프링 부트 메이븐 플러그인 : 최종목적 : 우버 jar를 만듦 -->
 			<plugin>
@@ -108,12 +81,12 @@
 				<version>1.1</version>
 				<configuration>
 					<url>http://192.168.219.104:8088/manager/text</url>
-					<path>/chat</path>
+					<path>/redis</path>
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-  
+
 </project>
