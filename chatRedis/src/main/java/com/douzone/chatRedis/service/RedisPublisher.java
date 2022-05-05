@@ -18,5 +18,6 @@ public class RedisPublisher {
     	System.out.println(topic.getTopic());
     	System.out.println(message);
         redisTemplate.convertAndSend(topic.getTopic(),message);
+        System.out.println("++++++++++++++++++++++++++++++++++");
     }
 }

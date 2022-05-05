@@ -35,10 +35,12 @@ public class RedisSubscriber implements MessageListener {
         	System.out.println("++++++++++Redis sub+++++++++++");
             String pubMsg = (String) redisTemplate.getStringSerializer().deserialize(message.getBody());
             ChatMessageDto msgDto = objectMapper.readValue(pubMsg,ChatMessageDto.class);
- 
+            System.out.println(pubMsg);
+            System.out.println(msgDto);
+            System.out.println(msgDto.getChatRoomNo());
             
             messagingTemplate.convertAndSend("/topic/chat/room/"+msgDto.getChatRoomNo(), msgDto);
-            
+            System.out.println("++++++++++++++++++++++++++++++");
             
 //            switch(ChatMessageDto.getMsgType()){
 //                case "chat":

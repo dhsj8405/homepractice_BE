@@ -46,8 +46,8 @@ public class StompController {
 //		roomInfo.setNo(1L);
 		simpMessagingTemplate.convertAndSend("/topic/chat/room/"+roomInfo.getChatRoomNo(),roomInfo);
 		
-//		ChannelTopic topic = new ChannelTopic((roomInfo.getChatRoomNo()).toString());
-//	    redisMessageListener.addMessageListener(redisSubscriber,topic);
+		ChannelTopic topic = new ChannelTopic(Integer.toString(roomInfo.getChatRoomNo()));
+	    redisMessageListener.addMessageListener(redisSubscriber,topic);
 	}
 	
 	 @MessageMapping( "/chat/message")
@@ -59,7 +59,7 @@ public class StompController {
 			chatService.addMessage(message);
 			
 			//레디스 x 기본 메시지 템플릿
-			simpMessagingTemplate.convertAndSend("/topic/chat/room/"+message.getChatRoomNo(), message);
+//			simpMessagingTemplate.convertAndSend("/topic/chat/room/"+message.getChatRoomNo(), message);
 			
 			//레디스
 			ChannelTopic topic = new ChannelTopic(String.valueOf(message.getChatRoomNo()));
