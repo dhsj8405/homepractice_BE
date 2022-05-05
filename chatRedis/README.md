@@ -5,7 +5,7 @@
 - redis 서버 실행  
  redis-server.exe 실행
 - cli로 확인하기  
- redis-cli.exe 실행
+ redis-cli.exe 실행  
  ![image](https://user-images.githubusercontent.com/60701130/166664129-9669b46d-3143-4fc1-862f-e37aa9c37a15.png)
 
 # spring boot 연동하기
