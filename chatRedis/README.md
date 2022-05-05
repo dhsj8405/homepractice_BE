@@ -30,6 +30,6 @@
           port: 6379
           host: localhost
     ```
- 3. redisConfig 클래스 작성
- 4. 메세지 컨트롤러 (StompController.java)에서 메시지 리스너추가, 기본 브로커로 보내지않고 레디스 publish로 메시지 발행추가
- 5. service패키지에 레디스 pub,sub 클래스 만들기
+ 3. [redisConfig](https://github.com/dhsj8405/homepractice_BE/blob/main/chatRedis/src/main/java/com/douzone/chatRedis/config/RedisConfig.java) 클래스 작성
+ 4. 메세지 컨트롤러 ([StompController.java](https://github.com/dhsj8405/homepractice_BE/blob/main/chatRedis/src/main/java/com/douzone/chatRedis/StompController.java))에서 메시지 리스너추가, 기본 브로커로 보내지않고 레디스 publish로 메시지 발행추가
+ 5. service패키지에 레디스 [pub](https://github.com/dhsj8405/homepractice_BE/blob/main/chatRedis/src/main/java/com/douzone/chatRedis/service/RedisPublisher.java),[sub](https://github.com/dhsj8405/homepractice_BE/blob/main/chatRedis/src/main/java/com/douzone/chatRedis/service/RedisSubscriber.java) 클래스 만들기
