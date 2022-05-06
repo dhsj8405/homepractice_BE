@@ -1,4 +1,4 @@
-package com.douzone.chatRedis;
+package com.douzone.chatRedis.controller;
 
 import java.util.List;
 import java.util.Map;

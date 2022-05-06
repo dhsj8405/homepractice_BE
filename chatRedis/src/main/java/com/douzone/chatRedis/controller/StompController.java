@@ -1,4 +1,4 @@
-package com.douzone.chatRedis;
+package com.douzone.chatRedis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.listener.ChannelTopic;

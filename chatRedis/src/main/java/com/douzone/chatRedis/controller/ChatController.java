@@ -1,4 +1,4 @@
-package com.douzone.chatRedis;
+package com.douzone.chatRedis.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -63,6 +63,7 @@ public class ChatController {
   @GetMapping("/chat/msgList/{no}")
   public Map<String, Object> getMessageList(@PathVariable int no){
   	System.out.println(no);
+  	System.out.println("@@@@@@@@@@@@@@@@@@@@");
   	// 가라로 채팅룸번호 1번넣을것임
   	List<ChatMessageDto> list = chatService.getMessageList(no);
 	Map<String, Object> map = new HashMap<>();
