@@ -44,7 +44,7 @@ public class StompController {
 		roomInfo.setMessage(roomInfo.getChatRoomNo()+"번 채팅방에 입장했습니다.");
 		//테스트용 가라번호삽입
 //		roomInfo.setNo(1L);
-		simpMessagingTemplate.convertAndSend("/topic/chat/room/"+roomInfo.getChatRoomNo(),roomInfo);
+//		simpMessagingTemplate.convertAndSend("/topic/chat/room/"+roomInfo.getChatRoomNo(),roomInfo);
 		
 		ChannelTopic topic = new ChannelTopic(Integer.toString(roomInfo.getChatRoomNo()));
 	    redisMessageListener.addMessageListener(redisSubscriber,topic);

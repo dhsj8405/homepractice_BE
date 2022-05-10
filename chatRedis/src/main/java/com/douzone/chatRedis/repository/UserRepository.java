@@ -18,4 +18,8 @@ public class UserRepository {
 		return sqlSession.selectList("user.findAllId");	
 	}
 
+	public UserVo findOne(UserVo userVo) {
+		return sqlSession.selectOne("user.findOneInfo", userVo);
+	}
+
 }

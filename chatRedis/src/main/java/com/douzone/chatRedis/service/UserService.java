@@ -26,6 +26,11 @@ public class UserService {
 		return map;
 	}
 
+	public UserVo getUserInfo(UserVo userVo) {
+		return userRepository.findOne(userVo);
+	}
+
+
 
 
 }

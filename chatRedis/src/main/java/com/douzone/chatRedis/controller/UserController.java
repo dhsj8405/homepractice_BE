@@ -20,6 +20,15 @@ public class UserController {
 	private UserService userService;
 	
     
+	@PostMapping("/user/userInfo")
+	  public UserVo getUserInfo(@RequestBody UserVo userVo){
+		System.out.println(userVo.getId());
+		System.out.println("z");
+//		UserVo a = userService.getUserInfo(userVo);
+//		System.out.println(a.getName());
+	  	return userService.getUserInfo(userVo);
+	  }
+	
 //    @PostMapping("/user/login")
 //    public Long inviteChat(@RequestBody UserVo userVo){
 //    	System.out.println(userVo.getId());

@@ -52,7 +52,7 @@ public class ChatController {
    // 유저아이디로 채팅방 리스트 조회
    @PostMapping("/chat/chatRoomList")
    public Map<String, Object> getChatRoomList(@RequestBody UserVo userVo){
-
+	   System.out.println("로그인 시 방 리스트");
     	List<ChatRoomDto> chatRoomlist = chatService.getChatRoomList(userVo.getId());
     	Map<String, Object> map = new HashMap<>();
     	map.put("list", chatRoomlist);
@@ -62,8 +62,7 @@ public class ChatController {
   // 클릭된  방번호로 채팅 내용 조회
   @GetMapping("/chat/msgList/{no}")
   public Map<String, Object> getMessageList(@PathVariable int no){
-  	System.out.println(no);
-  	System.out.println("@@@@@@@@@@@@@@@@@@@@");
+  	System.out.println("방 선택시 메시지 리스트 조회");
   	// 가라로 채팅룸번호 1번넣을것임
   	List<ChatMessageDto> list = chatService.getMessageList(no);
 	Map<String, Object> map = new HashMap<>();

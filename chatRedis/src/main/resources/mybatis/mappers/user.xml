@@ -7,7 +7,14 @@
 			select no, name, id, password from user
 		]]>
 	</select>
+
 	
+		
+	<select id="findOneInfo" resultType="uservo" parameterType="uservo">
+		<![CDATA[
+			select no, name, id, password from user where id = #{id}
+		]]>
+	</select>
 	
 </mapper>
 	
