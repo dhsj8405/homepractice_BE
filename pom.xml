@@ -17,6 +17,7 @@
   	<module>chat</module>
   	<module>chatRedis</module>
   	<module>redis</module>
+  	<module>jwt</module>
   </modules>
 
   

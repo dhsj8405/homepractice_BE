@@ -5,16 +5,15 @@
     <artifactId>homepractice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>cors</artifactId>
+  <artifactId>jwt</artifactId>
   <packaging>war</packaging>
   
-    <!-- jre System 라이브러리 1.25인것 1.8로 바꿈 -->
+  <!-- jre System 라이브러리 1.25인것 1.8로 바꿈 -->
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	
-		<!-- 부모 스타터 대체하는것: 우리수업에서 파일정리때문에 메이븐모듈(프로젝트가) 단독으로 쓰이지 못해서 사용 --> 
+  <!-- 부모 스타터 대체하는것: 우리수업에서 파일정리때문에 메이븐모듈(프로젝트가) 단독으로 쓰이지 못해서 사용 --> 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -44,7 +43,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-			<!-- MyBatis Starter-->
+		
+		<!-- MyBatis Starter-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -69,22 +69,15 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
 		</dependency>
-	
 		<!-- tomcat jasper -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
-		
-	</dependencies>
-	
+		</dependencies>
 	<build>
-		<finalName>cors</finalName>
+		<finalName>jwt</finalName>
 		<plugins>
 			<!-- 스프링 부트 메이븐 플러그인 : 최종목적 : 우버 jar를 만듦 -->
 			<plugin>
@@ -107,12 +100,11 @@
 				<version>1.1</version>
 				<configuration>
 					<url>http://192.168.219.104:8088/manager/text</url>
-					<path>/cors</path>
+					<path>/jwt</path>
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-  
 </project>
