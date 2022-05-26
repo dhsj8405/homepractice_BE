@@ -21,7 +21,6 @@ public class CorsFilter implements Filter{
 		resp.setHeader("Access-Control-Allow-Methods", "*");
 		resp.setHeader("Access-Control-Allow-Headers", "*");
 		resp.setHeader("Access-Control-Expose-Headers", "*");
-		
 		chain.doFilter(req, res);
 	}
 

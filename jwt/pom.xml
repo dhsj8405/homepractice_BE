@@ -74,8 +74,26 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-		
-		</dependencies>
+		<!-- JWT -->
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- For Working with JSon Web Tokens ( JWT) -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- JAVA 버전이 10 이상일 때 에러 생김 -->
+        <!-- java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter -->
+        <!-- 
+        <dependency>
+    		<groupId>org.glassfish.jaxb</groupId>
+    		<artifactId>jaxb-runtime</artifactId>
+		</dependency> 
+		-->
+	</dependencies>
 	<build>
 		<finalName>jwt</finalName>
 		<plugins>
