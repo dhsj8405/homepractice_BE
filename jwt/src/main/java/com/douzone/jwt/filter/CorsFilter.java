@@ -18,6 +18,7 @@ public class CorsFilter implements Filter{
 		System.out.println("[CorsFilter.java] CORS 필터 동작");
 		HttpServletResponse resp = (HttpServletResponse) res;
 		resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//		resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.setHeader("Access-Control-Allow-Methods", "*");
 		resp.setHeader("Access-Control-Allow-Headers", "*");
 		resp.setHeader("Access-Control-Expose-Headers", "*");

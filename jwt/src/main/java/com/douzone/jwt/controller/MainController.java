@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
     @GetMapping("/main")
     public String getHome(){
+    	System.out.println("main");
         return "일단 cors 완성";
     }
 }
