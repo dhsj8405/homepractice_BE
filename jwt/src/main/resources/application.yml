@@ -51,8 +51,7 @@ spring:
       hikari:
          minimum-idle: 10
          maximum-pool-size: 20
-jwt:
-   secret: jwtsecretkey
+
 ---
 
 # production profile - spring boot configuration
