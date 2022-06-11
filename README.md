@@ -13,5 +13,5 @@ tomcatmanager활용한 배포과정
 - [redis](https://github.com/dhsj8405/homepractice_BE/tree/main/redis)  
 레디스 기본 공부
 
-- [jwt](https://github.com/dhsj8405/homepractice_BE/tree/main/jwt)
+- [jwt](https://github.com/dhsj8405/homepractice_BE/tree/main/jwt)  
 jwt 공부
