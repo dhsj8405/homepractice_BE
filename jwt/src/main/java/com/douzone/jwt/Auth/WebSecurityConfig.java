@@ -1,14 +1,16 @@
 package com.douzone.jwt.Auth;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+// 기본적인 웹 보안을 활성화 하겠다라는 의미
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
@@ -17,7 +19,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	    @Override 
 	    protected void configure(HttpSecurity http) throws Exception {
-//	        http
+
+	    	http
+	    			.authorizeRequests()
+	    			.antMatchers("/api/v1/shops/**").hasRole("OWNER")
+	    			
 //	                .httpBasic().disable()
 //	                .cors().configurationSource(corsConfigurationSource())
 ////	                .headers().frameOptions().disable()
@@ -35,29 +41,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //	                    .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
 //	                            UsernamePasswordAuthenticationFilter.class);
 
-	        http
+//	        http
 	          /*... 중략 ...*/
 //	            .authorizeRequests()
 //	            .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() // - (1)
 	            /* 중략 */
 //	            .anyRequest().authenticated().and()
-	            .cors().and(); // - (2)	
+//	            .cors().and(); // - (2)	
 	        
 	    }
 	    
 	    // CORS 허용 적용
-//	    @Bean
-//	    public CorsConfigurationSource corsConfigurationSource() {
-//	        CorsConfiguration configuration = new CorsConfiguration();
-//	        // - (3)
-//			System.out.println("[WebSecurity.java] CORS 필터 동작");
-//	        configuration.addAllowedOrigin("*");
+	    @Bean
+	    public CorsConfigurationSource corsConfigurationSource() {
+	        CorsConfiguration configuration = new CorsConfiguration();
+	        // - (3)
+			System.out.println("[WebSecurity.java] CORS 필터 동작");
+	        configuration.addAllowedOrigin("http://localhost:3000");
 //	        configuration.addAllowedMethod("*");
-//	        configuration.addAllowedHeader("*");
-////	        configuration.setAllowCredentials(true);// 클라이언트에서 쿠키 받기 위함
-//	        configuration.setMaxAge(3600L); 
-//	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//	        source.registerCorsConfiguration("/**", configuration);
-//	        return source;
-//	    }
+	        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
+	        configuration.addAllowedHeader("*");
+	        configuration.setAllowCredentials(true);// 클라이언트에서 쿠키 받기 위함
+	        configuration.setMaxAge(3600L); 
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        source.registerCorsConfiguration("/**", configuration);
+	        return source;
+	    }
 }
