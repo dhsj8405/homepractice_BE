@@ -21,9 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    protected void configure(HttpSecurity http) throws Exception {
 
 	    	http
-	    			.authorizeRequests()
-	    			.antMatchers("/api/v1/shops/**").hasRole("OWNER")
-	    			
+	    			.authorizeRequests()							// HttpServletRequest를 사용하는 요청들에 대한 접근제한을 설정하겠다
+	    			.antMatchers("/login/auth").permitAll()	// url에 대한 요청은 인증없이 접근 허용 
+                    .anyRequest().authenticated();					// 나머지 요청은 모두 인증받아야함
 //	                .httpBasic().disable()
 //	                .cors().configurationSource(corsConfigurationSource())
 ////	                .headers().frameOptions().disable()
@@ -52,19 +52,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    }
 	    
 	    // CORS 허용 적용
-	    @Bean
-	    public CorsConfigurationSource corsConfigurationSource() {
-	        CorsConfiguration configuration = new CorsConfiguration();
-	        // - (3)
-			System.out.println("[WebSecurity.java] CORS 필터 동작");
-	        configuration.addAllowedOrigin("http://localhost:3000");
-//	        configuration.addAllowedMethod("*");
-	        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
-	        configuration.addAllowedHeader("*");
-	        configuration.setAllowCredentials(true);// 클라이언트에서 쿠키 받기 위함
-	        configuration.setMaxAge(3600L); 
-	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	        source.registerCorsConfiguration("/**", configuration);
-	        return source;
-	    }
+//	    @Bean
+//	    public CorsConfigurationSource corsConfigurationSource() {
+//	        CorsConfiguration configuration = new CorsConfiguration();
+//	        // - (3)
+//			System.out.println("[WebSecurity.java] CORS 필터 동작");
+//	        configuration.addAllowedOrigin("http://localhost:3000");
+////	        configuration.addAllowedMethod("*");
+//	        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
+//	        configuration.addAllowedHeader("*");
+//	        configuration.setAllowCredentials(true);// 클라이언트에서 쿠키 받기 위함
+//	        configuration.setMaxAge(3600L); 
+//	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//	        source.registerCorsConfiguration("/**", configuration);
+//	        return source;
+//	    }
 }

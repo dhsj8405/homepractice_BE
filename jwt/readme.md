@@ -55,3 +55,18 @@ JSON 객체를 사용해서 토큰 자체에 정보들을 저장하고 있는 �
 둘 중 하나를 하더라도 스프링 시큐리티를 사용중이라면 WebSecurityConfigurerAdapter를 상속하는 클래스에서 configure를 재정의하여 cors()를 사용해야한다.
 
 1번과 같이 선언하였다면 스프링 시큐리티에서는 스프링에 선언된 CORS구성을 활용하기 때문에 따로 CORS관련 필터를 정의할 필요가 없다.
+
+
+# jpa yml 설정
+spring.jpa.database-platform: 
+  - Spring Data JPA는 기본적으로 Hibernate라는 JPA 구현체를 사용한다. 
+  - Hibernate는 내부적으로 지정되는 DB에 맞게 SQL 문을 생성하는 Dialect가 존재한다.
+  - Dialect는 Hibernate가 다양한 데이터베이스를 처리하기 위해 각 데이터베이스에 맞는 (각기 다른) SQL 문법을 처리하기 위해 존재한다.
+  - MySQL5Dialect, MySQL5InnoDBDialect, Oracle10gDialect, OracleDialect 등 다양한 Dialect가 있다. (참고 링크)
+
+MySQL의 경우 데이터베이스의 엔진을 MyISAM과 InnoDB로 구분한다.
+MyISAM은 예전 MySQL부터 사용되던 엔진으로 속도면에서는 좀 더 나을 수 있지만, 데이터 불결성을 제대로 체크하지 않기 때문에 최근에는 기본적으로 InnoDB를 권장한다.
+
+
+* spring.jpa.database-platform을 명시적으로 지정하지 않으면 MyISAM으로 지정되고, 이럴 경우 외래키 대신에 인덱스가 생성되므로 주의해야 한다.
+- 스타트 스프링 부트 p.143

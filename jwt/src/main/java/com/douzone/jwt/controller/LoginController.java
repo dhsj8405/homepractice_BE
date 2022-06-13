@@ -1,15 +1,23 @@
 package com.douzone.jwt.controller;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.douzone.jwt.vo.UserVo;
 
 @RestController
+@RequestMapping("/login")
 public class LoginController {
-	
-	@PostMapping("/login/auth")
+
+	@GetMapping("/auth")
+	  public ResponseEntity<String> hello(){
+		return ResponseEntity.ok("hello");
+	}
+	@PostMapping("/auth1")
 	  public UserVo getUserInfo(@RequestBody UserVo userVo){
 		System.out.println(userVo.getId());
 		
