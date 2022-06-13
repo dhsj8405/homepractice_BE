@@ -1,23 +1,5 @@
 # jwt (with spring security)
-JSON 객체를 사용해서 토큰 자체에 정보들을 저장하고 있는 웹토큰
 
-구성
-- Header
-	signature를 해싱하기 위한 알고리즘 정보들이 담겨있다.
-- Payload
-	서버와 클라이언트가 주고받는, 시스템에서 실제로 사용될 정보에 대한 내용들이 담겨있다.
-- Signature
-	토큰의 유효성 검증을 위한 문자열 (서버에서 이 토큰이 유효한 토큰인지 검증함)
-장점
-- 중앙의 인증서버, 데이터 스토어에 대한 의존성 없다.
-	=> 수평 확장에 용이함
-- Base 64 URL Safe Encoding을 이용하기 때문에 URL, Cookie, Header 모두 사용가능	
-단점
-- Payload의 정보가 많아지면 네트워크 사용량 증가 => 데이터 설계 고려 필요
-- 토큰이 클라이언트에 저장되기 때문에 서버에서 토큰을 조작할 수 없음
-
-# 의존성 추가  
-=======
 ## 인증 방식
 
 - 토큰 기반 인증
@@ -38,8 +20,24 @@ JSON 객체를 사용해서 토큰 자체에 정보들을 저장하고 있는 �
 
 # 구현
 
-## 의존성 추가  
+JSON 객체를 사용해서 토큰 자체에 정보들을 저장하고 있는 웹토큰
 
+구성
+- Header
+	signature를 해싱하기 위한 알고리즘 정보들이 담겨있다.
+- Payload
+	서버와 클라이언트가 주고받는, 시스템에서 실제로 사용될 정보에 대한 내용들이 담겨있다.
+- Signature
+	토큰의 유효성 검증을 위한 문자열 (서버에서 이 토큰이 유효한 토큰인지 검증함)
+장점
+- 중앙의 인증서버, 데이터 스토어에 대한 의존성 없다.
+	=> 수평 확장에 용이함
+- Base 64 URL Safe Encoding을 이용하기 때문에 URL, Cookie, Header 모두 사용가능	
+단점
+- Payload의 정보가 많아지면 네트워크 사용량 증가 => 데이터 설계 고려 필요
+- 토큰이 클라이언트에 저장되기 때문에 서버에서 토큰을 조작할 수 없음
+
+# 의존성 추가  
 ```
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,11 +50,11 @@ JSON 객체를 사용해서 토큰 자체에 정보들을 저장하고 있는 �
             <version>0.9.1</version>
       	</dependency>
 ```
-## yml파일에 spring datasource 설정
+# yml파일에 spring datasource 설정
 ```
 ```
 
-## CORS 에러
+# CORS 에러
 - pom에서 spring security 의존성 추가하자마자 CORS 오류 발생
 	```
 	spring 공식문서  
@@ -70,14 +68,13 @@ JSON 객체를 사용해서 토큰 자체에 정보들을 저장하고 있는 �
 	
 	
 	
-## Spring Security에서 CORS설정
+# Spring Security에서 CORS설정
 스프링과 스프링 시큐리티를 함께 사용중이라면 CORS설정은 두 가지 방법으로 할 수 있다.
 1. 스프링에서 WebConfigurerAdapter를 상속하는 클래스에 addCorsMappings메소드를 재정의
 2. 스프링 시큐리티에서 CorsConfigurationSource 클래스를 만들고 내부에 CorsConfiguration을 세팅한다.
 둘 중 하나를 하더라도 스프링 시큐리티를 사용중이라면 WebSecurityConfigurerAdapter를 상속하는 클래스에서 configure를 재정의하여 cors()를 사용해야한다.
 
 1번과 같이 선언하였다면 스프링 시큐리티에서는 스프링에 선언된 CORS구성을 활용하기 때문에 따로 CORS관련 필터를 정의할 필요가 없다.
-
 
 # jpa yml 설정
 spring.jpa.database-platform: 
@@ -92,3 +89,4 @@ MyISAM은 예전 MySQL부터 사용되던 엔진으로 속도면에서는 좀 �
 
 * spring.jpa.database-platform을 명시적으로 지정하지 않으면 MyISAM으로 지정되고, 이럴 경우 외래키 대신에 인덱스가 생성되므로 주의해야 한다.
 - 스타트 스프링 부트 p.143
+
