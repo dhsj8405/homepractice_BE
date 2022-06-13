@@ -12,3 +12,6 @@ tomcatmanager활용한 배포과정
 채팅(기본 브로커에서 레디스 pub/sub으로 대체)
 - [redis](https://github.com/dhsj8405/homepractice_BE/tree/main/redis)  
 레디스 기본 공부
+
+- [jwt](https://github.com/dhsj8405/homepractice_BE/tree/main/jwt)  
+jwt 공부
