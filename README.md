@@ -1,4 +1,6 @@
-# homepractice_BE
+# [레포지토리 이전주소](https://github.com/dhsj8405/homepractice/tree/main/backend/springboot)
+
+## homepractice_BE
 
 - [chat-practice](https://github.com/dhsj8405/homepractice_BE/tree/main/chat) / Front-end : [chat-practice](https://github.com/dhsj8405/homepractice_FE/tree/main/chat-practice)  
 채팅(stomp활용 기본브로커)
